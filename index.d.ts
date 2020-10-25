@@ -1515,7 +1515,7 @@ declare namespace Eris {
     rateLimitPerUser: number;
     lastPinTimestamp?: number;
     getWebhooks(): Promise<Webhook[]>;
-    createWebhook(options: { name: string; avatar: string }, reason?: string): Promise<Webhook>;
+    createWebhook(options: { name: string; avatar?: string }, reason?: string): Promise<Webhook>;
     sendTyping(): Promise<void>;
     purge(limit: number, filter?: (message: Message<GuildTextable>) => boolean, before?: string, after?: string, reason?: string): Promise<number>;
     deleteMessages(messageIDs: string[], reason?: string): Promise<void>;
@@ -1567,7 +1567,7 @@ declare namespace Eris {
     getInvites(): Promise<ChannelInvite[]>;
     createInvite(options?: CreateInviteOptions, reason?: string): Promise<ChannelInvite>;
     getWebhooks(): Promise<Webhook[]>;
-    createWebhook(options: { name: string; avatar: string }, reason?: string): Promise<Webhook>;
+    createWebhook(options: { name: string; avatar?: string }, reason?: string): Promise<Webhook>;
     sendTyping(): Promise<void>;
     getMessage(messageID: string): Promise<Message<TextChannel>>;
     getMessages(limit?: number, before?: string, after?: string, around?: string): Promise<Message<TextChannel>[]>;
