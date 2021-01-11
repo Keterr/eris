@@ -472,6 +472,12 @@ declare namespace Eris {
     filename: string;
   }
 
+  interface MessageReference {
+    messageID: string,
+    channelID: string,
+    guildID: string
+  }
+
   interface VoiceRegion {
     name: string;
     deprecated: boolean;
@@ -1795,6 +1801,7 @@ declare namespace Eris {
     editedTimestamp?: number;
     tts: boolean;
     mentionEveryone: boolean;
+    messageReference: MessageReference | null;
     attachments: Attachment[];
     embeds: Embed[];
     reactions: { [s: string]: any; count: number; me: boolean };
