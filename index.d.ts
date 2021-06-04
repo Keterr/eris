@@ -1082,6 +1082,103 @@ declare namespace Eris {
 
       GUILD_INVITE_REMINDER: 22;
     };
+    Permissions: {
+      createInstantInvite: 1n;
+      kickMembers: 2n;
+      banMembers: 4n;
+      administrator: 8n;
+      manageChannels: 16n;
+      manageGuild: 32n;
+      addReactions: 64n;
+      viewAuditLog: 128n;
+      /** @deprecated */
+      viewAuditLogs: 128n;
+      voicePrioritySpeaker: 256n;
+      voiceStream: 512n;
+      /** @deprecated */
+      stream: 512n;
+      viewChannel: 1024n;
+      /** @deprecated */
+      readMessages: 1024n;
+      sendMessages: 2048n;
+      sendTTSMessages: 4096n;
+      manageMessages: 8192n;
+      embedLinks: 16384n;
+      attachFiles: 32768n;
+      readMessageHistory: 65536n;
+      mentionEveryone: 131072n;
+      useExternalEmojis: 262144n;
+      /** @deprecated */
+      externalEmojis: 262144n;
+      viewGuildInsights: 524288n;
+      voiceConnect: 1048576n;
+      voiceSpeak: 2097152n;
+      voiceMuteMembers: 4194304n;
+      voiceDeafenMembers: 8388608n;
+      voiceMoveMembers: 16777216n;
+      voiceUseVAD: 33554432n;
+      changeNickname: 67108864n;
+      manageNicknames: 134217728n;
+      manageRoles: 268435456n;
+      manageWebhooks: 536870912n;
+      manageEmojis: 1073741824n;
+      useSlashCommands: 2147483648n;
+      voiceRequestToSpeak: 4294967296n;
+      allGuild: 2080899262n;
+      allText: 2953313361n;
+      allVoice: 4629464849n;
+      all: 8589934591n;
+    };
+    REST_VERSION: 7;
+    StickerFormats: {
+      PNG: 1;
+      APNG: 2;
+      LOTTIE: 3;
+    };
+    SystemJoinMessages: [
+      "%user% joined the party.",
+      "%user% is here.",
+      "Welcome, %user%. We hope you brought pizza.",
+      "A wild %user% appeared.",
+      "%user% just landed.",
+      "%user% just slid into the server.",
+      "%user% just showed up!",
+      "Welcome %user%. Say hi!",
+      "%user% hopped into the server.",
+      "Everyone welcome %user%!",
+      "Glad you're here, %user%.",
+      "Good to see you, %user%.",
+      "Yay you made it, %user%!"
+    ];
+    UserFlags: {
+      NONE: 0;
+      DISCORD_EMPLOYEE: 1;
+      DISCORD_PARTNER: 2;
+      HYPESQUAD_EVENTS: 4;
+      BUG_HUNTER_LEVEL_1: 8;
+      HOUSE_BRAVERY: 64;
+      HOUSE_BRILLIANCE: 128;
+      HOUSE_BALANCE: 256;
+      EARLY_SUPPORTER: 512;
+      TEAM_USER: 1024;
+      SYSTEM: 4096;
+      BUG_HUNTER_LEVEL_2: 16384;
+      VERIFIED_BOT: 65536;
+      VERIFIED_BOT_DEVELOPER: 131072;
+    };
+    VoiceOPCodes: {
+      IDENTIFY: 0;
+      SELECT_PROTOCOL: 1;
+      READY: 2;
+      HEARTBEAT: 3;
+      SESSION_DESCRIPTION: 4;
+      SPEAKING: 5;
+      HEARTBEAT_ACK: 6;
+      RESUME: 7;
+      HELLO: 8;
+      RESUMED: 9;
+      DISCONNECT: 13;
+    };
   }
 
   interface GuildEmbed {
@@ -2321,6 +2418,7 @@ declare namespace Eris {
   class SequentialBucket {
     latencyRef: LatencyRef;
     limit: number;
+    _queue: ((cb: () => void) => void)[];
     processing: boolean;
     remaining: number;
     reset: number;
